@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:context=".view.MainActivity">
+
+    <include
+            android:id="@+id/tool_bar"
+            layout="@layout/toolbar_layout"
+    />
+
+    <LinearLayout
+            android:id="@+id/search_tab"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:weightSum="11"
+            android:layout_below="@id/tool_bar"
+            android:layout_marginTop="15dp"
+            android:padding="5dp">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/search_text"
+                android:hint=" 검색할 정류장 이름을 입력해주세요"
+                android:gravity="center_vertical"
+                android:layout_width="0dp"
+                android:paddingLeft="5dp"
+                android:layout_height="match_parent"
+                android:layout_weight="11"
+                app:met_floatingLabel="normal"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                app:met_floatingLabelText="검색할 정류장 이름을 입력해주세요"/>
+
+        <ImageButton
+                android:id="@+id/search_button"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:scaleType="centerInside"
+                android:background="#00000000"
+                android:src="@drawable/ic_search_icon"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/info_tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="50dp"
+            android:layout_below="@id/search_tab">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+</RelativeLayout>
+
