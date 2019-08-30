@@ -1,12 +1,14 @@
 package com.example.dell.mvvm_bus_arrival.adapter
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dell.mvvm_bus_arrival.R
 import com.example.dell.mvvm_bus_arrival.model.StationInfoData
+import com.example.dell.mvvm_bus_arrival.view.MapViewActivity
 import com.example.dell.mvvm_bus_arrival.view.ShowArrivalInfo
 import kotlinx.android.synthetic.main.arrival_info_item.view.*
 
@@ -41,6 +43,15 @@ class StationInfoAdapter : RecyclerView.Adapter<StationInfoAdapter.ViewHolder>()
             intent.putExtra("stationNm", items[position].stationNm)
             intent.putStringArrayListExtra("busRouteIdList", items[position].busRouteId)
 
+            it.context.startActivity(intent)
+        }
+
+        holder.go_map_view.setOnClickListener {
+            val intent = Intent(it.context, MapViewActivity::class.java)
+            intent.putExtra("stationNm", items[position].stationNm)
+            intent.putExtra("arsId", items[position].arsId)
+            intent.putExtra("tmX", items[position].tmX)
+            intent.putExtra("tmY", items[position].tmY)
             it.context.startActivity(intent)
         }
 

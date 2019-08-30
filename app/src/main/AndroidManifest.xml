@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.dell.mvvm_bus_arrival">
+          xmlns:tools="http://schemas.android.com/tools" package="com.example.dell.mvvm_bus_arrival">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="2174202acffdff3e0e0cabefcefef521"/>
 
     <application
             android:name=".BusInfoApplication"
@@ -11,7 +16,10 @@
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme" tools:ignore="GoogleAppIndexingWarning"
+            android:usesCleartextTraffic="true">
+        <activity android:name=".view.MapViewActivity">
+        </activity>
         <activity android:name=".view.ShowArrivalInfo">
         </activity>
         <activity android:name=".view.MainActivity">

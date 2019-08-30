@@ -2,7 +2,12 @@ package com.example.dell.mvvm_bus_arrival.view
 
 
 import android.annotation.SuppressLint
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.util.Base64
+import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +19,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 import kotlinx.android.synthetic.main.toolbar_layout.view.*
 import org.koin.android.ext.android.inject
+import java.security.MessageDigest
 
 class MainActivity : BaseActivity() {
 
@@ -21,6 +27,7 @@ class MainActivity : BaseActivity() {
     private val arsIdViewModelFactory: ArsIdViewModelFactory by inject()
     private val adapter = StationInfoAdapter()
 
+    @RequiresApi(Build.VERSION_CODES.P)
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +52,10 @@ class MainActivity : BaseActivity() {
             arsIdViewModel.stationInfoList.clear()
             arsIdViewModel.getStationInfo(search_text.text.toString())
         }
+    }
 
-
+    override fun onPause() {
+        Log.d("pause", "onPause()")
+        super.onPause()
     }
 }
